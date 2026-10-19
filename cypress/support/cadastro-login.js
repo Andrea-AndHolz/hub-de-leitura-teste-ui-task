@@ -13,7 +13,6 @@ class Cadastro {
     btnEntrar() { return cy.get('#login-btn')}
 
 
-
     //meodos
 
     visitaPaginaCadastro() {
@@ -37,8 +36,7 @@ class Cadastro {
     }
 
     fecharPagina(){
-        this.btnSairPagina().click()
-        
+        this.btnSairPagina().click()        
     }
 
     fazerLogin(email, senha){
