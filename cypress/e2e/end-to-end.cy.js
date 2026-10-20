@@ -11,11 +11,13 @@ describe('Testes End To End do fluxo de cadastro e login', () => {
         let email = `teste${Date.now()}@teste.com`
 
         cy.fixture('usuario').then((user) => {
-            cadastro.preencherFormCadastro('Andrea Santos', email, '11 56568787', user.senha, user.senha)
+            cadastro.preencherFormCadastro( 'Andrea Santos', email, '11 56568787', user.senha, user.senha)
             cy.url().should('include', 'dashboard');
             cy.get('.user-actions > .btn-outline-danger > .fas')
             cadastro.fecharPagina()
             cadastro.fazerLogin(email, user.senha);
+            cy.url().should('include', 'dashboard');
+            cy.get('#user-name').should('contain', 'Andrea Santos');
             cy.screenshot('login-realizado', { overwrite: true })
         })
     });
